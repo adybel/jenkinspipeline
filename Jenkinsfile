@@ -21,7 +21,19 @@ pipeline {
                 build job: 'deploy-to-staging'
             }
         }
-       
+        stage ('Deploy to Production'){
+            steps {
+                build job 'deploy-to-prod'
+            }
+            post {
+                success{
+                    echo 'Code deployed to Production'
+                }
+                failure {
+                    echo 'Deployment FAILED'
+                }
+            }
+        }
     }
 
 //git add Jenkinsfile
