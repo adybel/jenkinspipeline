@@ -22,7 +22,11 @@ pipeline {
             }
         }
         stage ('Deploy to Production'){
-            steps {
+            steps{
+                timeout(time:5, unit:'DAYS'){
+                    input message: 'Approve PRODUCTION Deployment?'
+                }
+                
                 build job 'deploy-to-prod'
             }
             post {
@@ -36,6 +40,7 @@ pipeline {
         }
     }
 
+//Comenzi GIT:
 //git add Jenkinsfile
 //git commit -m "add Jenkinsfile"
 //git push
