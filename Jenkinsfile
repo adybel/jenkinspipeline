@@ -1,25 +1,23 @@
 pipeline {
     agent any
     stages {
-        stage('Init'){
-            steps {
-                echo "Testing....."
-                }
-            }
         stage('Build'){
             steps {
-                echo "Building..."
+                sh 'mvn clean package'
+                }
+            post {
+                success {
+                    echo "Now archiving..."
+                    archiveArtifacts artifacts: '**/targetr/*.war'
                 }
             }
-        stage('Deploy'){
-            steps {
-                echo "Code Deployed."
-                }
-			
-			} 
-          }
+        }
+       
+    }
 
-//test-1
+//git add Jenkinsfile
+//git commit -m "add Jenkinsfile"
+//git push
 
 }
 
