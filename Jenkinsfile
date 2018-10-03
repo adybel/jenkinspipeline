@@ -36,6 +36,7 @@ pipeline {
         }
     }
 
+//Comenzi GIT:
 //git add Jenkinsfile
 //git commit -m "add Jenkinsfile"
 //git push
