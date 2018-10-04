@@ -24,7 +24,7 @@ pipeline {
         stage ('Deploy to Production'){
             steps{
                                 
-                build job 'deploy-to-prod'
+                build job: 'deploy-to-prod'
             }
             post {
                 success{
